@@ -1,0 +1,54 @@
+<script>
+    function manageBox(){
+        document.getElementById("loginBox").style.visibility="hidden";
+        document.getElementById("signupBox").style.display="block";
+    }
+</script>
+
+<div id="loginBox" class="wrapper fadeInDown" style="visibility: visible;">
+    <div id="formContent">
+        
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="../../assets/userImg.png" id="icon" alt="User Icon" style="height: 90px;width: auto;"/>
+        </div>
+        <div>
+            <p style="color: red;">{{LoginMessage}}</p>
+        </div>    
+        <!-- Login Form -->
+        <form>
+            <input type="text" [(ngModel)]="user.username" id="login" class="fadeIn second" name="login" placeholder="login">
+            <input type="text" [(ngModel)]="user.password" id="password" class="fadeIn third" name="login" placeholder="password">
+            <input type="submit" (click)="loggedIn();" class="fadeIn fourth" value="Log In">
+        </form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a><br>
+            <input type="button" class="underlineHover" onclick="manageBox();" value="Sign Up">
+        </div>
+
+    </div>
+</div>
+
+<div id="signupBox" class="wrapper fadeInDown" style="visibility:hidden;">
+    <div id="formContent">
+        
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="../../assets/userImg.png" id="icon" alt="User Icon" style="height: 90px;width: auto;"/>
+        </div>
+        <div>
+            <p style="color: red;">{{LoginMessage}}</p>
+        </div>    
+        <!-- Login Form -->
+        <form>
+            <input type="text" [(ngModel)]="user.username" id="login" class="fadeIn second" name="login" placeholder="username">
+            <input type="text" [(ngModel)]="user.email" id="password" class="fadeIn third" name="login" placeholder="email">
+            <input type="text" [(ngModel)]="user.password" id="password" class="fadeIn third" name="login" placeholder="password">
+            
+            <input type="submit" (click)="signUp();" class="fadeIn fourth" value="Sign Up">
+        </form>
+
+    </div>
+</div>

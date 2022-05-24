@@ -1,0 +1,109 @@
+<div class="container">
+    <div class="messaging">
+        <div class="inbox_msg">
+            <div class="inbox_people">
+                <div class="headind_srch">
+                    <div class="recent_heading">
+                        <h4>{{token}}</h4>
+                    </div>
+                    <div class="srch_bar">
+                        <div class="stylish-input-group">
+                            <input type="text" class="search-bar" placeholder="Search">
+                            <span class="input-group-addon">
+                                <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                            </span> </div>
+                    </div>
+                </div>
+                <div class="inbox_chat" *ngFor="let contact of contactlist">
+                    <div *ngFor="let rec of contact.receiver">
+                        <div class="chat_list">
+                            <div class="chat_people">
+
+                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png"
+                                        alt="sunil"> </div>
+                                <div class="chat_ib">
+                                    <h5><input class="name" style="border: none;" type="button" (click)="changed(val);" #val
+                                            value="{{rec.nameR}}"><span class="chat_date">Dec 25</span></h5>
+                                    <p>Test, which is a new approach to have all solutions
+                                        astrology under one roof.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="border-top: 1px solid black;">
+                    <button class="btn btn-lg col-sm-6" style="border: none;" id="addcontact" data-toggle="modal" data-target="#exampleModalCenter">Add contact</button>
+                    <button class="btn btn-lg col-sm-6" style="border: none;" (click)="logout();">Log Out</button>
+                    
+                </div>
+            </div>
+            <div class="recent_heading" >
+                <h4>{{Receiver}}</h4>
+            </div>
+            <div class="mesgs" >
+
+                <div class="msg_history">
+                    <div *ngFor="let message of messages">
+                        <div *ngFor="let msg of message.msgs">
+                            <div class="incoming_msg" *ngIf="msg.typeM=='r'">
+                                <div class="incoming_msg_img"> <img
+                                        src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                <div class="received_msg">
+                                    <div class="received_withd_msg">
+                                        <p>{{msg.textM}}</p>
+                                        <span class="time_date"> {{msg.timeM}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="outgoing_msg" *ngIf="msg.typeM=='s'">
+                                <div class="sent_msg">
+                                    <p>{{msg.textM}}</p>
+                                    <span class="time_date"> {{msg.timeM}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="type_msg">
+                    <div class="input_msg_write">
+                        <input type="text" id="myInput" [(ngModel)]="message.sendMsg" class="write_msg"
+                            placeholder="Type a message" />
+                        <button class="msg_send_btn" onclick="document.getElementById('myInput').value = ''"
+                            (click)="sendMsg();" type="button"><i class="fa fa-paper-plane-o"
+                                aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <p class="text-center top_spac"> Design by <a target="_blank" href="#">Ravi Dayani</a></p>
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Add Contact</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" [(ngModel)]="receiverName" placeholder="Receiver Name">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" (click)="createNew();" class="btn btn-primary" data-dismiss="modal">Save
+                    changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
